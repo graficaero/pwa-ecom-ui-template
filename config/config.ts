@@ -5,6 +5,7 @@ import type { SetUserToken } from '@/hooks/useSearchInsights'
 import type { Refinement, RefinementLayout } from '@/typings/refinements'
 import { capitalize } from '@/utils/capitalize'
 import { indexName } from '@/utils/env'
+import { getAnalyticsTags } from '@/utils/getAnalyticsTags'
 
 export type Config = typeof config
 
@@ -96,6 +97,7 @@ const searchParameters = {
   snippetEllipsisText: '…',
   analytics: true,
   clickAnalytics: true,
+  analyticsTags: getAnalyticsTags(),
 }
 
 const setUserToken: SetUserToken = (generatedUserToken, setToken) => {

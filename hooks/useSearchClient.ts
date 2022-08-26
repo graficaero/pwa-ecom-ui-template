@@ -5,6 +5,7 @@ import { useMemo } from 'react'
 // eslint-disable-next-line import/extensions
 import packageJson from '@/package.json'
 import { querySuggestionsIndexName } from '@/utils/env'
+import { getAnalyticsTags } from '@/utils/getAnalyticsTags'
 
 export type SearchClientHookOptions = {
   appId: string
@@ -22,8 +23,13 @@ export function getSearchClient(
     ...client,
     search(requests) {
       const modifiedRequests = requests.map((searchParameters) => {
+        const requestAnalyticsTags =
+          searchParameters.params?.analyticsTags || []
+        const analyticsTags = getAnalyticsTags(requestAnalyticsTags)
+
         const detachedSearchParams = {
           ...searchParameters.params,
+          analyticsTags,
           page: 0,
           facetFilters: [],
           numericFilters: [],

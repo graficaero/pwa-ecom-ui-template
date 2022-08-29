@@ -7,6 +7,8 @@ import { VirtualSearchBox } from '@instantsearch/widgets/virtual-search-box/virt
 import { VirtualStateResults } from '@instantsearch/widgets/virtual-state-results/virtual-state-results'
 import { VirtualStats } from '@instantsearch/widgets/virtual-stats/virtual-stats'
 
+import { QueryRuleRedirect } from './widgets/query-rule-redirect/query-rule-redirect'
+
 export type SearchProps = InstantSearchProps & {
   children: React.ReactNode
   searchParameters?: Record<string, any>
@@ -24,6 +26,8 @@ function SearchComponent({
       <VirtualSearchBox />
       <VirtualStateResults />
       <VirtualStats />
+
+      <QueryRuleRedirect />
 
       {children}
     </InstantSearch>
